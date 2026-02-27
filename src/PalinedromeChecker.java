@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class PalinedromeChecker {
 
 
@@ -15,12 +17,7 @@ public class PalinedromeChecker {
         System.out.println("System initialized successfully.");
         System.out.println("Ready for next use case...");
         System.out.println("---------------------------------------");
-    }
-}
 
-public class PalinedromeChecker {
-
-    public static void main(String[] args) {
 
         String input = "madam";
         boolean isPalindrome = true;
@@ -37,5 +34,24 @@ public class PalinedromeChecker {
         } else {
             System.out.println(input + " is NOT a Palindrome.");
         }
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String uinput = scanner.nextLine();
+
+        String reversed = "";
+
+        for (int i = uinput.length() - 1; i >= 0; i--) {
+            reversed = reversed + uinput.charAt(i);
+        }
+
+        if (input.equals(reversed)) {
+            System.out.println("The given string is a Palindrome.");
+        } else {
+            System.out.println("The given string is NOT a Palindrome.");
+        }
+
+
     }
 }
