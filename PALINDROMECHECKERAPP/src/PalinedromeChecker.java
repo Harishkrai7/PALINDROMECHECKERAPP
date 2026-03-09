@@ -279,3 +279,43 @@ public static void main(String[] args) {
 
     System.out.println("Is Palindrome?: " + result);
 }
+// Strategy Interface
+interface PalindromeStrategy {
+    boolean check(String str);
+}
+
+// Stack based strategy
+class StackStrategy implements PalindromeStrategy {
+
+    public boolean check(String str) {
+
+        Stack<Character> stack = new Stack<>();
+
+        for(char c : str.toCharArray())
+            stack.push(c);
+
+        for(char c : str.toCharArray()) {
+            if(c != stack.pop())
+                return false;
+        }
+
+        return true;
+    }
+}
+
+public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter string: ");
+    String input = sc.nextLine();
+
+    input = input.replaceAll("\\s+","").toLowerCase();
+
+    // Inject strategy
+    PalindromeStrategy strategy = new StackStrategy();
+
+    boolean result = strategy.check(input);
+
+    System.out.println("Is Palindrome?: " + result);
+}
