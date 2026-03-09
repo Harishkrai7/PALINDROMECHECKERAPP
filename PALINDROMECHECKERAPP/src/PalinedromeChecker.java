@@ -265,3 +265,17 @@ public static void main(String[] args) {
 
     System.out.println("Is Palindrome?: " + isPalindrome);
 }
+
+public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter string: ");
+    String input = sc.nextLine();
+
+    PalindromeChecker checker = new PalindromeChecker();
+
+    boolean result = checker.checkPalindrome(input);
+
+    System.out.println("Is Palindrome?: " + result);
+}
