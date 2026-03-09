@@ -319,3 +319,35 @@ public static void main(String[] args) {
 
     System.out.println("Is Palindrome?: " + result);
 }
+
+public static boolean loopPalindrome(String str) {
+    for (int i = 0; i < str.length() / 2; i++) {
+        if (str.charAt(i) != str.charAt(str.length() - 1 - i))
+            return false;
+    }
+    return true;
+}
+
+public static boolean reversePalindrome(String str) {
+    String rev = new StringBuilder(str).reverse().toString();
+    return str.equals(rev);
+}
+
+public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter string: ");
+    String input = sc.nextLine().replaceAll("\\s+","").toLowerCase();
+
+    long start1 = System.nanoTime();
+    boolean r1 = loopPalindrome(input);
+    long end1 = System.nanoTime();
+
+    long start2 = System.nanoTime();
+    boolean r2 = reversePalindrome(input);
+    long end2 = System.nanoTime();
+
+    System.out.println("Loop Method: " + r1 + " Time: " + (end1 - start1) + " ns");
+    System.out.println("Reverse Method: " + r2 + " Time: " + (end2 - start2) + " ns");
+}
