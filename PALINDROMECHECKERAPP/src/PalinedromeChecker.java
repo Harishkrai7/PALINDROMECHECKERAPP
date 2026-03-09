@@ -351,3 +351,31 @@ public static void main(String[] args) {
     System.out.println("Loop Method: " + r1 + " Time: " + (end1 - start1) + " ns");
     System.out.println("Reverse Method: " + r2 + " Time: " + (end2 - start2) + " ns");
 }
+
+public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter string: ");
+    String input = sc.nextLine().replaceAll("\\s+","").toLowerCase();
+
+    // Start time
+    long start = System.nanoTime();
+
+    boolean isPalindrome = true;
+
+    for (int i = 0; i < input.length() / 2; i++) {
+        if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+            isPalindrome = false;
+            break;
+        }
+    }
+
+    // End time
+    long end = System.nanoTime();
+
+    long timeTaken = end - start;
+
+    System.out.println("Is Palindrome?: " + isPalindrome);
+    System.out.println("Execution Time: " + timeTaken + " ns");
+}
