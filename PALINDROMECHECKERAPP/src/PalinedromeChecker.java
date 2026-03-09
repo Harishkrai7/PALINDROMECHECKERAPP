@@ -152,3 +152,66 @@ isPalindrome = false;
 } else {
         System.out.println(input + " is NOT a Palindrome");
 }
+static class Node {
+    char data;
+    Node next;
+
+    Node(char d) {
+        data = d;
+    }
+}
+
+public static boolean isPalindrome(String str) {
+
+    Node head = null, temp = null;
+
+    // convert string to linked list
+    for(char c : str.toCharArray()) {
+        Node n = new Node(c);
+        if(head == null) {
+            head = n;
+            temp = n;
+        } else {
+            temp.next = n;
+            temp = n;
+        }
+    }
+
+    Node slow = head, fast = head;
+
+    // find middle
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    // reverse second half
+    Node prev = null;
+    while(slow != null) {
+        Node next = slow.next;
+        slow.next = prev;
+        prev = slow;
+        slow = next;
+    }
+
+    // compare halves
+    while(prev != null) {
+        if(head.data != prev.data) return false;
+        head = head.next;
+        prev = prev.next;
+    }
+
+    return true;
+}
+
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter string: ");
+    String s = sc.nextLine();
+
+    if(isPalindrome(s))
+        System.out.println("Palindrome");
+    else
+        System.out.println("Not Palindrome");
+}
